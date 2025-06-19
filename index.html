@@ -1,30 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="transition duration-500">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Details</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('your-background-image.jpg'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    .dark body {
+      background-color: #1f2937;
+      color: #f9fafb;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-r from-blue-100 to-indigo-200 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
-    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Enter Your Details</h1>
-    <form id="customerForm" class="space-y-5">
-      <div>
-        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your full name" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-      </div>
-      <div>
-        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-      </div>
-      <div>
-        <label for="address" class="block text-sm font-medium text-gray-700">Delivery Address</label>
-        <textarea id="address" name="address" placeholder="Flat no, Street, Area, PIN code" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
-      </div>
-      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition duration-300 shadow-lg">Continue to Catalog</button>
-    </form>
+<body class="bg-indigo-100 min-h-screen flex flex-col items-center justify-center px-4">
+  <div class="w-full max-w-5xl mb-4 flex justify-between items-center">
+    <div class="ml-4">
+      <!-- Logo placeholder -->
+      <img src="your-logo.png" alt="Logo" class="h-12 w-auto" /> <!-- Replace with actual logo -->
+    </div>
+    <button onclick="toggleDarkMode()" class="mr-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition">
+      Toggle Dark Mode
+    </button>
   </div>
+
+  <div class="flex flex-col-reverse lg:flex-row items-center lg:items-start bg-white dark:bg-gray-800 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden w-full max-w-5xl animate-fade-in">
+    <div class="w-full lg:w-1/2 p-8">
+      <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">Enter Your Details</h1>
+      <form id="customerForm" class="space-y-5">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:ring hover:ring-indigo-200 transition" />
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:ring hover:ring-indigo-200 transition" />
+        </div>
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Delivery Address</label>
+          <textarea id="address" name="address" placeholder="Flat no, Street, Area, PIN code" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:ring hover:ring-indigo-200 transition"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition duration-300 shadow-lg hover:shadow-xl">Continue to Catalog</button>
+      </form>
+    </div>
+    <div class="hidden lg:block lg:w-1/2 h-full">
+      <!-- Placeholder image -->
+      <img src="your-background-image.jpg" alt="Background Visual" class="w-full h-full object-cover" />
+    </div>
+  </div>
+
   <script>
     document.getElementById('customerForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -32,6 +62,19 @@
       localStorage.setItem('customerInfo', JSON.stringify(data));
       window.location.href = 'catalog.html';
     });
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
   </script>
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out both;
+    }
+  </style>
 </body>
 </html>
