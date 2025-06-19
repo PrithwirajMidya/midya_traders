@@ -1,0 +1,37 @@
+<div id="catalog">
+  <!-- Dynamically insert products here -->
+</div>
+<button onclick="goToReview()">Review Order</button>
+
+<script>
+const products = [
+  { id: 1, name: 'Item A', price: 100 },
+  { id: 2, name: 'Item B', price: 200 },
+];
+const order = [];
+
+products.forEach(p => {
+  const item = document.createElement('div');
+  item.innerHTML = `
+    <h4>${p.name} - ₹${p.price}</h4>
+    <input type="number" min="0" value="0" onchange="updateOrder(${p.id}, this.value)">
+  `;
+  document.getElementById('catalog').appendChild(item);
+});
+
+function updateOrder(id, qty) {
+  const index = order.findIndex(item => item.id === id);
+  if (qty > 0) {
+    const product = products.find(p => p.id === id);
+    if (index > -1) order[index].qty = qty;
+    else order.push({ ...product, qty });
+  } else {
+    order.splice(index, 1);
+  }
+  localStorage.setItem('order', JSON.stringify(order));
+}
+
+function goToReview() {
+  window.location.href = 'review.html';
+}
+</script>
