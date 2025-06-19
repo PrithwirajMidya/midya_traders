@@ -3,17 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catalog</title>
+  <title>Customer Details</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-2xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6 text-center">Customer Details</h1>
-    <form id="customerForm" class="space-y-4">
-      <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border rounded" />
-      <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-2 border rounded" />
-      <textarea name="address" placeholder="Delivery Address" required class="w-full p-2 border rounded"></textarea>
-      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Next</button>
+<body class="bg-gradient-to-r from-blue-100 to-indigo-200 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Enter Your Details</h1>
+    <form id="customerForm" class="space-y-5">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </div>
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      </div>
+      <div>
+        <label for="address" class="block text-sm font-medium text-gray-700">Delivery Address</label>
+        <textarea id="address" name="address" placeholder="Flat no, Street, Area, PIN code" required class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition duration-300 shadow-lg">Continue to Catalog</button>
     </form>
   </div>
   <script>
